@@ -5,7 +5,26 @@ body, h1, h2, p, ul, li {
 }
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Markazi Text', sans-serif; /* Use Markazi Text for headlines */
+  background-color: #EDEFEE; /* Set a light background color */
+}
+
+/* Primary Colors */
+:root {
+  --primary-bg-color: #495E57;
+  --primary-text-color: #F4CE14;
+}
+
+/* Secondary Colors */
+:root {
+  --secondary-bg-color: #EE9972;
+  --secondary-text-color: #FBDABB;
+}
+
+/* Highlight Colors */
+:root {
+  --highlight-bg-color: #EDEFEE;
+  --highlight-text-color: #333333;
 }
 
 .App {
@@ -15,22 +34,26 @@ body {
 }
 
 .header {
-  background-color: #FFD700; /* Lemon Yellow */
-  color: #333;
+  background: linear-gradient(to bottom, var(--primary-bg-color), #333); /* Gradient from primary to dark color */
+  color: var(--primary-text-color);
   padding: 20px;
   text-align: center;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
 }
 
 .header h1 {
-  font-size: 2rem;
+  font-family: 'Markazi Text Medium', sans-serif; /* Use Markazi Text Medium for headlines */
+  font-size: 2.5rem; /* Slightly larger font size */
   margin: 0;
+  text-transform: uppercase; /* Convert headline to uppercase */
 }
 
 .nav {
-  background-color: #333;
-  color: white;
+  background-color: var(--secondary-bg-color);
+  color: var(--secondary-text-color);
   padding: 10px;
   text-align: center;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
 }
 
 .nav ul {
@@ -45,7 +68,7 @@ body {
 }
 
 .nav a {
-  color: white;
+  color: var(--secondary-text-color);
   text-decoration: none;
 }
 
@@ -53,15 +76,17 @@ body {
   padding: 20px;
   text-align: left;
   background-color: #fff;
-  border-radius: 5px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 16px; /* Rounded corners for the main content */
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1); /* Slightly larger shadow */
   flex: 1; /* Take up remaining space */
 }
 
 .footer {
-  background-color: #333;
-  color: white;
+  background-color: var(--secondary-bg-color);
+  color: var(--secondary-text-color);
   padding: 10px;
+  text-align: center;
+  box-shadow: 0px -5px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow at the top */
 }
 
 /* Media Queries for Responsive Design */
@@ -69,25 +94,59 @@ body {
 /* Mobile styles (up to 768px) */
 @media (max-width: 768px) {
   .header {
-    padding: 10px;
+    padding: 15px; /* Slightly larger padding */
   }
   .header h1 {
-    font-size: 1.5rem;
+    font-size: 2rem;
   }
 }
 
 /* Tablet styles (769px to 1024px) */
 @media (min-width: 769px) and (max-width: 1024px) {
   .header h1 {
-    font-size: 1.8rem;
+    font-size: 2.2rem; /* Slightly larger font size */
   }
 }
 
 /* Desktop styles (1025px and above) */
 @media (min-width: 1025px) {
   .header h1 {
-    font-size: 2rem;
+    font-size: 2.5rem;
   }
 }
+
+/* Custom Styles for Typography */
+.sub-title {
+  font-size: 40pt;
+  font-weight: normal;
+  color: var(--primary-text-color);
+}
+
+.regular-text {
+  font-size: 18pt;
+  color: var(--highlight-text-color);
+}
+
+.card-title {
+  font-size: 18pt;
+  font-weight: bold;
+  color: var(--primary-text-color);
+}
+
+.paragraph-text {
+  font-size: 16pt;
+  line-height: 1.5; /* Adjust line height for better readability */
+  color: #555; /* Darker text color */
+}
+
+/* Highlight Text */
+.highlight-text {
+  color: var(--highlight-text-color);
+  font-size: 16pt;
+}
+
+
+
+
 
 
