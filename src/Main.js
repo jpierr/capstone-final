@@ -1,3 +1,4 @@
+// Main.js
 import React from 'react';
 import './App.css';
 
@@ -12,3 +13,5 @@ function Main() {
 }
 
 export default Main;
+
+
