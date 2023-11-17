@@ -1,4 +1,4 @@
-/* App.css */
+/* Add your styles here */
 body, h1, h2, p, ul, li {
   margin: 0;
   padding: 0;
@@ -89,34 +89,3 @@ body {
     font-size: 2rem;
   }
 }
-
-
-
-
-
-.booking-slot {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 10px;
-  border: 1px solid #ddd;
-  margin: 5px;
-}
-
-.booking-slot.available {
-  background-color: #aaffaa; /* Light green for available slots */
-}
-
-.booking-slot.booked {
-  background-color: #ffaaaa; /* Light red for booked slots */
-}
-
-.booking-slot button {
-  margin-top: 5px;
-  padding: 5px;
-}
-
-
-
-
-
