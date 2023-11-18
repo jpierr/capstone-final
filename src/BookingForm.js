@@ -1,7 +1,7 @@
+// BookingForm.js
 import React, { useState } from 'react';
-import './App.css';
 
-function BookingForm({ updateTimes, initializeTimes, setBookedTimes }) {
+function BookingForm({ availableTimes, updateTimes, initializeTimes, setBookedTimes }) {
   const [formData, setFormData] = useState({
     date: '',
     time: '',
@@ -11,13 +11,7 @@ function BookingForm({ updateTimes, initializeTimes, setBookedTimes }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Update state or perform other actions based on the form data
-    // ...
-
-    // Example: Add the selected time to bookedTimes
     setBookedTimes((prevBookedTimes) => [...prevBookedTimes, formData.time]);
-
-    // Reset the form
     setFormData({
       date: '',
       time: '',
@@ -29,8 +23,6 @@ function BookingForm({ updateTimes, initializeTimes, setBookedTimes }) {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({ ...prevData, [name]: value }));
-
-    // Update available times when the date changes
     if (name === 'date') {
       updateTimes(value);
     }
@@ -41,7 +33,33 @@ function BookingForm({ updateTimes, initializeTimes, setBookedTimes }) {
       <label htmlFor="res-date">Choose date</label>
       <input type="date" id="res-date" name="date" value={formData.date} onChange={handleChange} />
 
-      {/* ... (rest of the form) */}
+      <label htmlFor="res-time">Choose time</label>
+      <select id="res-time" name="time" value={formData.time} onChange={handleChange}>
+        {availableTimes.map((time) => (
+          <option key={time} value={time}>
+            {time}
+          </option>
+        ))}
+      </select>
+
+      <label htmlFor="res-guests">Number of guests</label>
+      <input
+        type="number"
+        id="res-guests"
+        name="guests"
+        value={formData.guests}
+        onChange={handleChange}
+        min="1"
+      />
+
+      <label htmlFor="res-occasion">Occasion</label>
+      <input
+        type="text"
+        id="res-occasion"
+        name="occasion"
+        value={formData.occasion}
+        onChange={handleChange}
+      />
 
       <input type="submit" value="Make Your reservation" />
     </form>

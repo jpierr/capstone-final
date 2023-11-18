@@ -1,55 +1,38 @@
 // Main.js
-
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import BookingForm from './BookingForm';
-import BookingSlot from './BookingSlot';
-import './App.css';
-
-export function initializeTimes() {
-  // Your logic to initialize availableTimes
-  // For simplicity, let's keep it the same for now
-  return ['17:00', '18:00', '19:00', '20:00', '21:00', '22:00'];
-}
-
-export function updateTimes(date) {
-  // Your logic to update availableTimes based on the selected date
-  // For simplicity, let's keep it the same for now
-  return ['17:00', '18:00', '19:00', '20:00', '21:00', '22:00'];
-}
+import { fetchAPI, getTodayDate } from './Api';
 
 function Main() {
-  const [availableTimes, setAvailableTimes] = useState(['17:00', '18:00', '19:00', '20:00', '21:00', '22:00']);
-  const [bookedTimes, setBookedTimes] = useState(['18:00']);
+  const [availableTimes, setAvailableTimes] = useState([]);
 
-  const updateTimes = (date) => {
-    // Your logic to update availableTimes based on the selected date
-    // For simplicity, let's keep it the same for now
-    setAvailableTimes(['17:00', '18:00', '19:00', '20:00', '21:00', '22:00']);
+  const initializeTimes = async () => {
+    const todayDate = getTodayDate();
+    const times = await fetchAPI(todayDate);
+    setAvailableTimes(times);
   };
 
-  const initializeTimes = () => {
-    // Your logic to initialize availableTimes
-    // For simplicity, let's keep it the same for now
-    setAvailableTimes(['17:00', '18:00', '19:00', '20:00', '21:00', '22:00']);
-  };
+  useEffect(() => {
+    initializeTimes();
+  }, []);
 
   return (
-    <main className="main">
-      <h2>Our Specialties</h2>
-      <BookingForm updateTimes={updateTimes} initializeTimes={initializeTimes} setBookedTimes={setBookedTimes} />
-
-      {/* Display booked and available slots */}
-      <div className="booking-slots">
-        {availableTimes.map((time) => (
-          <BookingSlot key={time} time={time} isBooked={bookedTimes.includes(time)} />
-        ))}
-      </div>
-
-      {/* Additional content as needed */}
-    </main>
+    <div>
+      <h1>Booking App</h1>
+      <BookingForm
+        availableTimes={availableTimes}
+        updateTimes={(date) => {
+          // Implement logic to update available times based on the selected date
+          // ...
+        }}
+        initializeTimes={initializeTimes}
+        setBookedTimes={(bookedTimes) => {
+          // Implement logic to handle booked times
+          // ...
+        }}
+      />
+    </div>
   );
 }
 
 export default Main;
-
-
