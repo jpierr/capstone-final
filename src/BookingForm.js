@@ -1,7 +1,6 @@
-// BookingForm.js
 import React, { useState } from 'react';
 
-function BookingForm({ availableTimes, updateTimes, initializeTimes, setBookedTimes }) {
+function BookingForm({ availableTimes, updateTimes, initializeTimes, setBookedTimes, submitForm }) {
   const [formData, setFormData] = useState({
     date: '',
     time: '',
@@ -11,7 +10,8 @@ function BookingForm({ availableTimes, updateTimes, initializeTimes, setBookedTi
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setBookedTimes((prevBookedTimes) => [...prevBookedTimes, formData.time]);
+    submitForm(formData);
+    // Optionally, you can reset the form here if needed
     setFormData({
       date: '',
       time: '',

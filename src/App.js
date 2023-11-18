@@ -8,6 +8,7 @@ import Main from './Main';
 import Footer from './Footer';
 import HomePage from './HomePage';
 import BookingPage from './BookingPage';
+import ConfirmedBooking from './ConfirmedBooking'; // Import ConfirmedBooking
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/booking" element={<BookingPage />} />
+          <Route path="/confirmed" element={<ConfirmedBooking />} /> {/* Add route for ConfirmedBooking */}
         </Routes>
         <Main />
         <Footer />
@@ -27,6 +29,7 @@ function App() {
 }
 
 export default App;
+
 
 
 

@@ -1,4 +1,5 @@
-// Example content of api.js
+// Api.js
+
 export const fetchAPI = async (date) => {
   // Implement logic to fetch available times based on the given date
   // ...
@@ -7,12 +8,23 @@ export const fetchAPI = async (date) => {
   return ['10:00 AM', '12:00 PM', '2:00 PM'];
 };
 
-export const submitAPI = async (formData) => {
-  // Implement logic to submit the form data
-  // ...
+export const submitAPI = async (formData, date, time) => {
+  try {
+    // Implement logic to submit the form data (e.g., send a request to a server)
+    // ...
 
-  // For demonstration purposes, logging the form data
-  console.log('Form Data Submitted:', formData);
+    // For demonstration purposes, logging the form data, date, and time
+    console.log('Form Data Submitted:', formData);
+    console.log('Booking Date:', date);
+    console.log('Booking Time:', time);
+
+    // Simulate a successful form submission
+    return true;
+  } catch (error) {
+    // Handle errors or failures in form submission
+    console.error('Form Submission Failed:', error);
+    return false;
+  }
 };
 
 export const getTodayDate = () => {
