@@ -1,8 +1,10 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen } from "@testing-library/react";
 import App from './App';
 
-test('renders learn react link', () => {
+test('renders App component', () => {
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+  const headerElement = screen.getByText("Little Lemon Restaurant");
+  expect(headerElement).toBeInTheDocument();
+
+  // Add more assertions as needed for other elements in your App component
 });

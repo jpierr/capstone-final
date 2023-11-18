@@ -1,35 +1,36 @@
-import React, { useState, useReducer } from 'react';
+// Main.js
+
+import React, { useState } from 'react';
 import BookingForm from './BookingForm';
 import BookingSlot from './BookingSlot';
 import './App.css';
 
-const initialState = ['17:00', '18:00', '19:00', '20:00', '21:00', '22:00'];
+export function initializeTimes() {
+  // Your logic to initialize availableTimes
+  // For simplicity, let's keep it the same for now
+  return ['17:00', '18:00', '19:00', '20:00', '21:00', '22:00'];
+}
 
-function reducer(state, action) {
-  switch (action.type) {
-    case 'UPDATE_TIMES':
-      // Your logic to update availableTimes based on the selected date
-      // For simplicity, let's keep it the same for now
-      return ['17:00', '18:00', '19:00', '20:00', '21:00', '22:00'];
-    default:
-      return state;
-  }
+export function updateTimes(date) {
+  // Your logic to update availableTimes based on the selected date
+  // For simplicity, let's keep it the same for now
+  return ['17:00', '18:00', '19:00', '20:00', '21:00', '22:00'];
 }
 
 function Main() {
-  const [availableTimes, dispatch] = useReducer(reducer, initialState);
+  const [availableTimes, setAvailableTimes] = useState(['17:00', '18:00', '19:00', '20:00', '21:00', '22:00']);
   const [bookedTimes, setBookedTimes] = useState(['18:00']);
 
   const updateTimes = (date) => {
     // Your logic to update availableTimes based on the selected date
     // For simplicity, let's keep it the same for now
-    dispatch({ type: 'UPDATE_TIMES' });
+    setAvailableTimes(['17:00', '18:00', '19:00', '20:00', '21:00', '22:00']);
   };
 
   const initializeTimes = () => {
     // Your logic to initialize availableTimes
     // For simplicity, let's keep it the same for now
-    dispatch({ type: 'INITIALIZE_TIMES' });
+    setAvailableTimes(['17:00', '18:00', '19:00', '20:00', '21:00', '22:00']);
   };
 
   return (
@@ -50,3 +51,5 @@ function Main() {
 }
 
 export default Main;
+
+
