@@ -1,34 +1,38 @@
 // Main.js
-
 import React, { useEffect, useState } from 'react';
 import BookingForm from './BookingForm';
-import { fetchAPI, getTodayDate, submitAPI } from './Api';
+import { fetchAPI, getTodayDate } from './Api';
 import { useNavigate } from 'react-router-dom';
+
+export const initializeTimes = async (setAvailableTimes) => {
+  try {
+    const todayDate = getTodayDate();
+    const times = await fetchAPI(todayDate);
+    setAvailableTimes(times);
+  } catch (error) {
+    console.error('Error initializing times:', error);
+  }
+};
+
+export const updateTimes = (date) => {
+  // Implement logic to update available times based on the selected date
+  // ...
+  return ['17:00', '18:00', '19:00', '20:00', '21:00', '22:00']; // Replace with your implementation
+};
 
 function Main() {
   const [availableTimes, setAvailableTimes] = useState([]);
   const navigate = useNavigate();
 
-  const initializeTimes = async () => {
-    const todayDate = getTodayDate();
-    const times = await fetchAPI(todayDate);
-    setAvailableTimes(times);
-  };
-
   useEffect(() => {
-    initializeTimes();
+    const fetchData = async () => {
+      await initializeTimes(setAvailableTimes);
+    };
+
+    fetchData();
   }, []);
 
-  const submitForm = async (formData) => {
-    const date = formData.date; // Extract date from form data
-    const time = formData.time; // Extract time from form data
-    const isBookingSuccessful = await submitAPI(formData, date, time);
-
-    if (isBookingSuccessful) {
-      navigate('/confirmed', { state: { confirmedDate: date, confirmedTime: time } });
-    }
-    // You can add more logic or feedback for unsuccessful bookings if needed
-  };
+  // ... rest of the component
 
   return (
     <div>
@@ -37,14 +41,19 @@ function Main() {
         availableTimes={availableTimes}
         updateTimes={(date) => {
           // Implement logic to update available times based on the selected date
-          // ...
+          const updatedTimes = updateTimes(date);
+          setAvailableTimes(updatedTimes);
         }}
-        initializeTimes={initializeTimes}
+        initializeTimes={() => initializeTimes(setAvailableTimes)}
         setBookedTimes={(bookedTimes) => {
           // Implement logic to handle booked times
           // ...
         }}
-        submitForm={submitForm} // Pass the submitForm function to the BookingForm
+        submitForm={(formData) => {
+          // Implement logic to submit the form data
+          // ...
+          navigate('/confirmed'); // Assume success, navigate to the confirmation page
+        }}
       />
     </div>
   );
