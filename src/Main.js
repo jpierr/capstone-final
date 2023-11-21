@@ -32,7 +32,16 @@ function Main() {
     fetchData();
   }, []);
 
-  // ... rest of the component
+  const handleFormSubmit = async (formData) => {
+    // Implement logic to handle form submission
+    // For demonstration purposes, we assume success and navigate to the confirmation page
+
+    // Assuming `formData.date` and `formData.time` are the selected date and time
+    const confirmedDate = formData.date;
+    const confirmedTime = formData.time;
+
+    navigate('/confirmed', { state: { confirmedDate, confirmedTime } });
+  };
 
   return (
     <div>
@@ -49,11 +58,7 @@ function Main() {
           // Implement logic to handle booked times
           // ...
         }}
-        submitForm={(formData) => {
-          // Implement logic to submit the form data
-          // ...
-          navigate('/confirmed'); // Assume success, navigate to the confirmation page
-        }}
+        submitForm={handleFormSubmit}
       />
     </div>
   );
