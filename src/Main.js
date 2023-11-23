@@ -1,4 +1,3 @@
-// Main.js
 import React, { useEffect, useState } from 'react';
 import BookingForm from './BookingForm';
 import { fetchAPI, getTodayDate } from './Api';

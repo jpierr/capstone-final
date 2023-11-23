@@ -1,5 +1,3 @@
-// BookingSlot.js
-
 import React from 'react';
 import './App.css';
 
@@ -13,4 +11,3 @@ function BookingSlot({ time, isBooked }) {
 }
 
 export default BookingSlot;
-

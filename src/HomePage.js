@@ -1,4 +1,3 @@
-// HomePage.js
 import React from 'react';
 import './App.css';
 
@@ -13,4 +12,3 @@ function HomePage() {
 }
 
 export default HomePage;
-

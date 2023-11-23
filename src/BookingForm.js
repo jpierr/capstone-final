@@ -52,7 +52,7 @@ function BookingForm({ availableTimes, updateTimes, initializeTimes, setBookedTi
   };
 
   return (
-    <form onSubmit={handleSubmit} style={{ display: 'grid', maxWidth: '200px', gap: '20px' }}>
+    <form onSubmit={handleSubmit} style={{ display: 'grid', maxWidth: '200px', gap: '20px' }} aria-label="Booking Form">
       <label htmlFor="res-date">Choose date</label>
       <input
         type="date"
@@ -61,6 +61,7 @@ function BookingForm({ availableTimes, updateTimes, initializeTimes, setBookedTi
         value={formData.date}
         onChange={handleChange}
         required
+        aria-label="Reservation Date"
       />
 
       <label htmlFor="res-time">Choose time</label>
@@ -70,6 +71,7 @@ function BookingForm({ availableTimes, updateTimes, initializeTimes, setBookedTi
         value={formData.time}
         onChange={handleChange}
         required
+        aria-label="Reservation Time"
       >
         <option value="" disabled>Select a time</option>
         {availableTimes.map((time) => (
@@ -88,6 +90,7 @@ function BookingForm({ availableTimes, updateTimes, initializeTimes, setBookedTi
         onChange={handleChange}
         min="1"
         required
+        aria-label="Number of Guests"
       />
 
       <label htmlFor="res-occasion">Occasion</label>
@@ -97,9 +100,10 @@ function BookingForm({ availableTimes, updateTimes, initializeTimes, setBookedTi
         name="occasion"
         value={formData.occasion}
         onChange={handleChange}
+        aria-label="Occasion"
       />
 
-      <input type="submit" value="Make Your reservation" disabled={!isFormValid} />
+      <input type="submit" value="Make Your reservation" disabled={!isFormValid} aria-label="Submit Reservation" />
     </form>
   );
 }
